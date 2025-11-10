@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Players — Falcons Esports</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Исправляем фото игроков */
+    .card-img-top {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    /* Тёмный фон модалки View */
+    #playerModal .modal-content {
+      background-color: #212529;
+      color: #f8f9fa;
+    }
+
+    #playerModal .modal-header .btn-close {
+      filter: invert(1);
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="bg-dark text-light py-3 shadow-sm">
+    <div class="container d-flex justify-content-between align-items-center">
+      <a href="index.html" class="d-flex align-items-center text-decoration-none text-light">
+        <img src="img/лого.webp" alt="Falcons Logo" class="me-2" style="height:48px;" loading="lazy">
+        <h3 class="m-0">Falcons Esports</h3>
+      </a>
+      <nav>
+        <ul class="nav">
+          <li class="nav-item"><a class="nav-link text-light" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link text-light" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link active text-warning" href="players.html">Players</a></li>
+          <li class="nav-item"><a class="nav-link text-light" href="gallery.html">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link text-light" href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="py-5">
+    <div class="container">
+      <h1 class="text-center mb-4 fw-bold text-uppercase">Falcons CS2 Team Players</h1>
+
+      <!-- Search Bar -->
+      <div class="mb-4 text-center">
+        <input type="text" id="search-player" class="form-control w-50 mx-auto" placeholder="Search player...">
+      </div>
+
+      <!-- CRUD Buttons -->
+      <div class="text-center mb-4">
+        <button id="add-player-btn" class="btn btn-success me-2">Add Player</button>
+      </div>
+
+      <!-- Player Cards -->
+      <div class="row" id="players-container">
+
+        <!-- NiKo -->
+        <div class="col-md-4 mb-4 player-card" data-name="NiKo">
+          <div class="card shadow-sm hover-card">
+            <img src="img/nico.png" class="card-img-top" alt="NiKo" loading="lazy">
+            <div class="card-body text-center">
+              <h5 class="card-title">Nikola "NiKo" Kovač</h5>
+              <p class="card-text">Rifler</p>
+              <button class="btn btn-warning view-btn" data-bs-toggle="modal" data-bs-target="#playerModal"
+                data-nickname="NiKo" data-fullname="Nikola Kovač" data-role="Rifler" data-kd="1.23" data-mvp="12">
+                View
+              </button>
+              <button class="btn btn-primary edit-btn">Edit</button>
+              <button class="btn btn-danger delete-btn">Delete</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- TeSeS -->
+        <div class="col-md-4 mb-4 player-card" data-name="TeSeS">
+          <div class="card shadow-sm hover-card">
+            <img src="img/tes.webp" class="card-img-top" alt="TeSeS" loading="lazy">
+            <div class="card-body text-center">
+              <h5 class="card-title">René "TeSeS" Madsen</h5>
+              <p class="card-text">Rifler / Support</p>
+              <button class="btn btn-warning view-btn" data-bs-toggle="modal" data-bs-target="#playerModal"
+                data-nickname="TeSeS" data-fullname="René Madsen" data-role="Rifler / Support" data-kd="1.10" data-mvp="8">
+                View
+              </button>
+              <button class="btn btn-primary edit-btn">Edit</button>
+              <button class="btn btn-danger delete-btn">Delete</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- kyxsan -->
+        <div class="col-md-4 mb-4 player-card" data-name="kyxsan">
+          <div class="card shadow-sm hover-card">
+            <img src="img/kyx.webp" class="card-img-top" alt="kyxsan" loading="lazy">
+            <div class="card-body text-center">
+              <h5 class="card-title">Damjan "kyxsan" Stoilkovski</h5>
+              <p class="card-text">IGL</p>
+              <button class="btn btn-warning view-btn" data-bs-toggle="modal" data-bs-target="#playerModal"
+                data-nickname="kyxsan" data-fullname="Damjan Stoilkovski" data-role="IGL" data-kd="1.05" data-mvp="10">
+                View
+              </button>
+              <button class="btn btn-primary edit-btn">Edit</button>
+              <button class="btn btn-danger delete-btn">Delete</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- m0NESY -->
+        <div class="col-md-4 mb-4 player-card" data-name="m0NESY">
+          <div class="card shadow-sm hover-card">
+            <img src="img/mo.webp" class="card-img-top" alt="m0NESY" loading="lazy">
+            <div class="card-body text-center">
+              <h5 class="card-title">Ilya "m0NESY" Osipov</h5>
+              <p class="card-text">AWPer</p>
+              <button class="btn btn-warning view-btn" data-bs-toggle="modal" data-bs-target="#playerModal"
+                data-nickname="m0NESY" data-fullname="Ilya Osipov" data-role="AWPer" data-kd="1.30" data-mvp="14">
+                View
+              </button>
+              <button class="btn btn-primary edit-btn">Edit</button>
+              <button class="btn btn-danger delete-btn">Delete</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- kyousuke -->
+        <div class="col-md-4 mb-4 player-card" data-name="kyousuke">
+          <div class="card shadow-sm hover-card">
+            <img src="img/ky.png" class="card-img-top" alt="kyousuke" loading="lazy">
+            <div class="card-body text-center">
+              <h5 class="card-title">Maxim "kyousuke" Lukin</h5>
+              <p class="card-text">Rifler</p>
+              <button class="btn btn-warning view-btn" data-bs-toggle="modal" data-bs-target="#playerModal"
+                data-nickname="kyousuke" data-fullname="Maxim Lukin" data-role="Rifler" data-kd="1.08" data-mvp="9">
+                View
+              </button>
+              <button class="btn btn-primary edit-btn">Edit</button>
+              <button class="btn btn-danger delete-btn">Delete</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- View Player Modal -->
+  <div class="modal fade" id="playerModal" tabindex="-1" aria-labelledby="playerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Player Profile</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <p><strong>Nickname:</strong> <span id="modal-nickname"></span></p>
+          <p><strong>Full Name:</strong> <span id="modal-fullname"></span></p>
+          <p><strong>Role:</strong> <span id="modal-role"></span></p>
+          <p><strong>K/D Ratio:</strong> <span id="modal-kd"></span></p>
+          <p><strong>MVPs:</strong> <span id="modal-mvp"></span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Add/Edit -->
+  <div class="modal fade" id="crudModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Add / Edit Player</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form id="player-form">
+            <input type="hidden" id="player-index">
+            <div class="mb-3">
+              <label class="form-label">Nickname</label>
+              <input type="text" id="nickname" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Full Name</label>
+              <input type="text" id="fullname" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Role</label>
+              <input type="text" id="role" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">K/D Ratio</label>
+              <input type="number" id="kd" class="form-control" step="0.01" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">MVPs</label>
+              <input type="number" id="mvp" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-success w-100">Save Player</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-light py-3 mt-5">
+    <div class="container text-center">
+      <p class="mb-0">© <span id="year3"></span> Falcons Esports</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    $(document).ready(function() {
+      // Footer year
+      $('#year3').text(new Date().getFullYear());
+
+      // Search
+      $("#search-player").on("input", function() {
+        var value = $(this).val().toLowerCase();
+        $("#players-container .player-card").filter(function() {
+          $(this).toggle($(this).data("name").toLowerCase().indexOf(value) > -1);
+        });
+      });
+
+      // View player modal
+      $(document).on('click', '.view-btn', function() {
+        $('#modal-nickname').text($(this).data('nickname'));
+        $('#modal-fullname').text($(this).data('fullname'));
+        $('#modal-role').text($(this).data('role'));
+        $('#modal-kd').text($(this).data('kd'));
+        $('#modal-mvp').text($(this).data('mvp'));
+      });
+
+      // === CRUD ===
+      let editIndex = null;
+
+      $('#add-player-btn').click(function() {
+        editIndex = null;
+        $('#player-form')[0].reset();
+        $('#crudModal').modal('show');
+      });
+
+      $('#player-form').submit(function(e) {
+        e.preventDefault();
+        const nickname = $('#nickname').val();
+        const fullname = $('#fullname').val();
+        const role = $('#role').val();
+        const kd = $('#kd').val();
+        const mvp = $('#mvp').val();
+
+        if (editIndex === null) {
+          // Create new card
+          const card = `
+            <div class="col-md-4 mb-4 player-card" data-name="${nickname}">
+              <div class="card shadow-sm hover-card">
+                <img src="img/default.png" class="card-img-top" alt="${nickname}">
+                <div class="card-body text-center">
+                  <h5 class="card-title">${fullname}</h5>
+                  <p class="card-text">${role}</p>
+                  <button class="btn btn-warning view-btn" data-bs-toggle="modal" data-bs-target="#playerModal"
+                    data-nickname="${nickname}" data-fullname="${fullname}" data-role="${role}" data-kd="${kd}" data-mvp="${mvp}">
+                    View
+                  </button>
+                  <button class="btn btn-primary edit-btn">Edit</button>
+                  <button class="btn btn-danger delete-btn">Delete</button>
+                </div>
+              </div>
+            </div>`;
+          $('#players-container').append(card);
+        } else {
+          // Update existing card
+          const card = $('#players-container .player-card').eq(editIndex);
+          card.find('.card-title').text(fullname);
+          card.find('.card-text').text(role);
+          card.attr('data-name', nickname);
+        }
+
+        $('#crudModal').modal('hide');
+      });
+
+      // Edit
+      $(document).on('click', '.edit-btn', function() {
+        editIndex = $(this).closest('.player-card').index();
+        const card = $('#players-container .player-card').eq(editIndex);
+        $('#nickname').val(card.data('name'));
+        $('#fullname').val(card.find('.card-title').text());
+        $('#role').val(card.find('.card-text').text());
+        $('#kd').val(card.find('.view-btn').data('kd'));
+        $('#mvp').val(card.find('.view-btn').data('mvp'));
+        $('#crudModal').modal('show');
+      });
+
+      // Delete
+      $(document).on('click', '.delete-btn', function() {
+        if (confirm('Are you sure you want to delete this player?')) {
+          $(this).closest('.player-card').remove();
+        }
+      });
+    });
+  </script>
+</body>
+</html>

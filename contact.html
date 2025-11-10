@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Falcons Esports</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+  <!-- ===== HEADER ===== -->
+  <header class="d-flex justify-content-between align-items-center p-3 bg-dark text-white">
+    <div class="logo">
+      <h2 class="m-0">FALCONS</h2>
+    </div>
+    <nav>
+      <ul class="nav">
+        <li class="nav-item"><a href="index.html" class="nav-link text-white">Home</a></li>
+        <li class="nav-item"><a href="about.html" class="nav-link text-white">About</a></li>
+        <li class="nav-item"><a href="players.html" class="nav-link text-white">Players</a></li>
+        <li class="nav-item"><a href="gallery.html" class="nav-link text-white">Gallery</a></li>
+        <li class="nav-item"><a href="contact.html" class="nav-link text-warning fw-bold">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ===== MAIN ===== -->
+  <main class="container py-5">
+    <h1 class="text-center mb-4">Contact Us</h1>
+    <p class="text-center mb-5">Have a question or want to join Falcons Esports? Fill out the form below!</p>
+
+    <!-- Alert -->
+    <div id="formAlert" class="alert d-none" role="alert" aria-live="polite"></div>
+
+    <!-- Contact Form -->
+    <!-- Добавил novalidate чтобы браузер не мешал нашему кастомному JS-валидации -->
+    <form id="contactForm" class="mx-auto" style="max-width:600px;" novalidate>
+      <div class="mb-3">
+        <label for="name" class="form-label">Full Name</label>
+        <input type="text" id="name" class="form-control" placeholder="Enter your full name" required>
+        <div class="invalid-feedback">Please enter your name.</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="email" class="form-label">Email Address</label>
+        <input type="email" id="email" class="form-control" placeholder="example@email.com" required>
+        <div class="invalid-feedback">Please enter a valid email address.</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="message" class="form-label">Message</label>
+        <textarea id="message" class="form-control" rows="5" placeholder="Write your message..." required></textarea>
+        <div class="invalid-feedback">Please write a message.</div>
+      </div>
+
+      <button type="submit" class="btn btn-warning w-100">Send Message</button>
+    </form>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="bg-dark text-white text-center p-3 mt-5">
+    <p class="m-0">© <span id="year-contact"></span> Falcons Esports | All Rights Reserved</p>
+  </footer>
+
+  <!-- ===== JS: Bootstrap + Custom Validation ===== -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+  // contact.js (исправленная рабочая версия)
+
+  $(document).ready(function() {
+    // Автообновление футер-год
+    $('#year-contact').text(new Date().getFullYear());
+
+    // Правильный email regex (без лишних экранирований)
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    $('#contactForm').on('submit', function(e) {
+      e.preventDefault(); // мы сами управляем отправкой
+      let valid = true;
+
+      // Сброс предыдущих состояний
+      $('#formAlert').removeClass('alert-success alert-danger').addClass('d-none').text('');
+      $('#name, #email, #message').removeClass('is-invalid');
+
+      // Validate Name
+      const name = $('#name').val().trim();
+      if (name === '') {
+        $('#name').addClass('is-invalid');
+        valid = false;
+      }
+
+      // Validate Email
+      const email = $('#email').val().trim();
+      if (!emailRegex.test(email)) {
+        $('#email').addClass('is-invalid');
+        valid = false;
+      }
+
+      // Validate Message
+      const message = $('#message').val().trim();
+      if (message === '') {
+        $('#message').addClass('is-invalid');
+        valid = false;
+      }
+
+      if (!valid) {
+        // Показываем кастомный alert, браузерные подсказки отключены novalidate
+        $('#formAlert')
+          .removeClass('d-none')
+          .addClass('alert alert-danger')
+          .text('❌ Please fill out all required fields correctly.');
+
+        // Прокрутка к алерту (если форма длинная)
+        $('html, body').animate({ scrollTop: $('#formAlert').offset().top - 20 }, 200);
+        return;
+      }
+
+      // Если всё ок — показываем успешный alert
+      $('#formAlert')
+        .removeClass('d-none')
+        .addClass('alert alert-success')
+        .text('✅ Your message has been sent successfully!');
+
+      // Здесь можно добавить отправку через fetch/AJAX на сервер, если есть endpoint.
+      // Пример (коммент):
+      // $.post('/api/contact', { name, email, message }).done(() => { ... });
+
+      // Сброс формы
+      $('#contactForm')[0].reset();
+
+      // Скрол к alert
+      $('html, body').animate({ scrollTop: $('#formAlert').offset().top - 20 }, 200);
+    });
+
+    // Убираем is-invalid при вводе
+    $('#name, #email, #message').on('input', function() {
+      if ($(this).hasClass('is-invalid')) $(this).removeClass('is-invalid');
+    });
+  });
+  </script>
+</body>
+</html>
